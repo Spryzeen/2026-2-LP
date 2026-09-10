@@ -1,0 +1,4 @@
+PS C:\Users\spryz\dev\c\proy1\laboratorio_c> gcc -Wall -fsanitize=address -fsanitize=undefined notas.c -o notas_sanitize.exe
+C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lasan
+C:/TDM-GCC-64/bin/../lib/gcc/x86_64-w64-mingw32/10.3.0/../../../../x86_64-w64-mingw32/bin/ld.exe: cannot find -lubsan
+collect2.exe: error: ld returned 1 exit status
