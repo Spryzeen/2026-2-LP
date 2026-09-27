@@ -1,0 +1,68 @@
+#include <stdio.h>
+
+#define BIT(n) (1U << (n))
+
+int main(void) {
+    unsigned int registro = 0;
+
+    printf("Ingresa el registro inicial: ");
+    if (scanf("%u", &registro) != 1) return 1;
+
+    int opcion;
+
+    for (;;) {
+        printf("\nMenu:\n1. Set | 2. Clear | 3. Toggle | 4. Get | 5. Imprimir | 6. Contar 1s | 7. Not | 8. Salir\n");
+        printf("Opcion: ");
+        if (scanf("%d", &opcion) != 1 || opcion == 8) break;
+
+        unsigned int n = 0;
+        if (opcion >= 1 && opcion <= 4) {
+            do {
+                printf("Ingresa la posicion del bit (0-31): ");
+                scanf("%u", &n);
+            } while (n > 31);
+        }
+
+        switch (opcion) {
+            case 1:
+                registro |= BIT(n);
+                break;
+            case 2:
+                registro &= ~BIT(n);
+                break;
+            case 3:
+                registro ^= BIT(n);
+                break;
+            case 4: {
+                int estado = (registro >> n) & 1;
+                printf("Bit %u: %d\n", n, estado);
+                break;
+            }
+            case 5:
+                printf("Registro: ");
+                for (int i = 31; i >= 0; i--) {
+                    printf("%d", (registro >> i) & 1);
+                    if (i % 4 == 0) printf(" ");
+                }
+                printf("\nHexadecimal: 0x%08X\nDecimal: %u\n", registro, registro);
+                break;
+            case 6: {
+                int unos = 0;
+                unsigned int t = registro;
+                while (t) {
+                    t &= (t - 1);
+                    unos++;
+                }
+                printf("Cantidad de bits en 1: %d\n", unos);
+                break;
+            }
+            case 7:
+                registro = ~registro;
+                break;
+            default:
+                printf("Opcion invalida.\n");
+        }
+    }
+
+    return 0;
+}
