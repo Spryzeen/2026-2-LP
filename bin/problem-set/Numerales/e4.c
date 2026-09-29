@@ -27,10 +27,10 @@ int main() {
 
 	int new_num = num;
 
-	new_num -= (num / pow10) * pow10;
+	new_num -= first * pow10;
+	new_num -= last;
+	
 	new_num += last * pow10;
-    
-	new_num -= num % 10;
 	new_num += first;
 
     printf("Numero original: %d\n", num);
