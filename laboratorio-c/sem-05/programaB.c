@@ -13,3 +13,4 @@ int main (void) {
     printf("global contador: %d\n", contador);
     return 0;
 }
+

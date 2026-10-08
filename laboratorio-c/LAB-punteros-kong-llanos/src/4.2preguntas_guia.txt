@@ -1,0 +1,7 @@
+a) Si realloc devuelve NULL es debido a que hubo un fallo al intentar expandir la memoria, y si se usa v=realloc(v,...) entonces v se convierte directamente en NULL perdiendo el puntero al bloque de memoria original ocasionando una fuga de memoria porque ya no hay manera de usar free() sobre los datos que ya se tenían, la manera correcta es usando un puntero temporal como aparece en la guía
+
+b) La función realloc garantiza que el contenido original del bloque de memoria se copia intacto al nuevo bloque, y cuando el tamaño decrece el contenido original solo se conserva hasta el limite del nuevo tamaño
+
+c) Es mejor duplicar el tamaño pues se reduce las veces que se tiene que llamar a realloc, si se incrementara 1 a 1, el programa pasa demasiado tiempo buscando nuevos bloques y copiándolos continuamente; al duplicar, la complejidad amortizada se vuelve constante.
+
+d) Al hacer realloc(ptr,0) devuelve NULL, lo que es equivalente a free(ptr), sin embargo el comportamiento varia según la implementación del compilador, actualmente en C23 llarmar a realloc con un tamaño 0 esta definido como un comportamiento indefinido

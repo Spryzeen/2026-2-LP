@@ -1,0 +1,15 @@
+
+a) La diferencia principal es la inicialización, malloc reserva el bloque de memoria 
+    manteniendo basura o datos residuales que existían previamente en esas direcciones y 
+    calloc reserva el bloque y limpia su contenido inicializando todos los bits en 0
+
+    malloc se usa cuando se va a sobrescribir inmediatamente toda una estructura con datos propios, 
+    y es mejor usar calloc si se requiere que todos los valores tengan una inicialización en 0
+
+b) Es preferible usar calloc(n,size) porque este ayuda a prevenir un desbordamiento de enteros, por ejemplo
+   si se calcula manualmente la multiplicacion y el resultado excede el límite de size_t este se desborda y asigna
+   una cantidad de memoria menor a la deseada; si luego se usa memset creyendo que se tiene el tamaño completo esto
+   generara un erro de segmentacion en estos casos la funcion calloc realiza la multiplicacion de manera segura 
+
+c) Cuando malloc no puede reservar un bloque de memoria este devuelve NULL, este error se maneja condicionando 
+   un puntero con un if(puntero == NULL) para que devuelva un mensaje de error o terminar el programa 

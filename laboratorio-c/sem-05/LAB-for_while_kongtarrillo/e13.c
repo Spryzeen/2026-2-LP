@@ -5,12 +5,12 @@ int main (void) {
     double tolerancia = 0;
 
     printf("Ingresa un valor de tolerancia: ");
-    scanf("%f", &tolerancia);
+    scanf("%lf", &tolerancia);
 
     int i = 0;
 
     while (1) {
-        double termino = 1 / (i + 1);
+        double termino = (float) 1 / (i + 1);
 
         if ((i+1) % 2 == 0) {
             termino *= -1;
@@ -25,16 +25,16 @@ int main (void) {
         }
 
         if (termino < tolerancia) {
-            printf("STOP %f %f\n", termino, tolerancia);
+            printf("STOP %lf %lf\n", termino, tolerancia);
             break;
         }
     }
 
-    printf("Tolerancia: %f\n", tolerancia);
+    printf("Tolerancia: %lf\n", tolerancia);
     printf("Iteraciones: %d (Approx.)\n", i);
-    printf("Suma calculada: %f\n", suma);
+    printf("Suma calculada: %lf\n", suma);
     printf("ln(2) esperado: 0.693174\n");
-    printf("Error absoluto: %f", 0.693174 - suma);
+    printf("Error absoluto: %lf", 0.693174 - suma);
 
     return 0;
 }
