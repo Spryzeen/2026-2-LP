@@ -1,0 +1,3 @@
+1001,Juan Perez,18.5
+1002,Maria Lopez,17.0
+1003,Carlos Ruiz,16.5

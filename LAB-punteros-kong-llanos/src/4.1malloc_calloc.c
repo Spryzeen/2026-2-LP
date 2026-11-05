@@ -4,8 +4,8 @@
 int main() {
     int n = 10;
 
-    int *arr_malloc = (int*)malloc(n * sizeof(int));
-    int *arr_calloc = (int*)calloc(n, sizeof(int));
+    int *arr_malloc = (int* )malloc(n * sizeof(int));
+    int *arr_calloc = (int* )calloc(n, sizeof(int));
 
     if (arr_malloc == NULL || arr_calloc == NULL) {
         fprintf(stderr, "Error al reservar memoria.\n");
@@ -49,7 +49,7 @@ int main() {
 
     int ptr_var = (int*)malloc(0);
     printf("Variante malloc(0):\n");
-    if ptr_var == NULL) {
+    if (ptr_var == NULL) {
         printf("malloc(0) devolvió NULL.\n");
     } else {
         printf("malloc(0) devolvió un puntero con direccion: %p).\n",ptr_var);
