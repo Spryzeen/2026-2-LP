@@ -9,6 +9,7 @@ struct nodo {
 int main (void) {
     struct nodo* lista = NULL;
     struct nodo* head = NULL;
+    struct nodo* aux = NULL;
 
     lista = malloc(sizeof(struct nodo));
 
@@ -34,7 +35,7 @@ int main (void) {
     head->next = malloc(sizeof(struct nodo));
     if (head->next != NULL) {
         head = head->next;
-        head->valor = 100;
+        head->valor = 1000;
         head->next = NULL;
     } else {
         printf("No hay memoria");
@@ -45,6 +46,14 @@ int main (void) {
     while(head != NULL) {
         printf("Valor : %d\n", head->valor);
         head = head->next;
+    }
+
+    head = lista;
+    while(head != NULL) {
+        printf("Valor : %d\n", head->valor);
+        aux = head;
+        head = head->next;
+        free(aux);
     }
 
     return 0;
